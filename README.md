@@ -1,5 +1,5 @@
 ## ODBC integration for Laravel Framework
-This integration allows use <b>odbc_*</b> php function with Laravel framework instead PDO.<br>
+This integration allows the use of <b>odbc_*</b> php function with Laravel framework instead of PDO.<br>
 It emulates PDO class used by Laravel.
 
 ### # How to install
@@ -13,6 +13,7 @@ It's very simple to configure:
 'odbc-connection-name' => [
     'driver' => 'odbc',
     'dsn' => 'OdbcConnectionName',
+    'database' => 'DatabaseName',
     'host' => '127.0.0.1',
     'username' => 'username',
     'password' => 'password'
