@@ -20,5 +20,12 @@
 		"classmap": [
 			"src"
 		]
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Abram\\Odbc\\ODBCServiceProvider"
+			]
+		}
 	}
 }
