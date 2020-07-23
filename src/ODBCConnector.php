@@ -10,6 +10,7 @@ namespace Abram\Odbc;
 
 use Illuminate\Database\Connectors\Connector;
 use Illuminate\Database\Connectors\ConnectorInterface;
+use Illuminate\Support\Arr;
 
 class ODBCConnector extends Connector implements ConnectorInterface
 {
