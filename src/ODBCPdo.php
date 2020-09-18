@@ -58,7 +58,9 @@ class ODBCPdo extends PDO
 
     public function commit()
     {
-        return odbc_commit($this->getConnection());
+        $commit = odbc_commit($this->getConnection());
+        odbc_autocommit($this->getConnection(), true);
+        return $commit;
     }
 
     public function rollBack()

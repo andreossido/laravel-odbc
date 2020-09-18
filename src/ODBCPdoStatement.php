@@ -33,7 +33,10 @@ class ODBCPdoStatement extends PDOStatement
 
         while (isset($qryArray[$i])) {
             if (preg_match("/^:/", $qryArray[$i]))
-                $params[$qryArray[$i]] = null;
+            {
+                $namedParam = substr($qryArray[$i], 1); // omite el : del nombre (MK)
+                $params[$namedParam] = null;
+            }
             $i++;
         }
 
@@ -59,14 +62,40 @@ class ODBCPdoStatement extends PDOStatement
     public function fetchAll($how = NULL, $class_name = NULL, $ctor_args = NULL)
     {
         $records = [];
-        while ($record = $this->fetch()) {
-            $records[] = $record;
+        $stored_proc = false;
+
+        if (strlen($this->query) > 17)
+        {
+            if (strtolower(substr($this->query, 0, 17)) == 'execute procedure')
+            {
+                // MK: if it´s a stored procedure, column names may not be included
+                $stored_proc = true;
+            }
         }
+
+        if (! $stored_proc)
+        {
+            while ($record = $this->fetch()) {
+                $records[] = $record;
+            }
+        }
+        else
+        {
+            $records[] = $this->fetch_into($records);
+        }
+
         return $records;
     }
 
     public function fetch($option = null, $ignore = null, $ignore2 = null)
     {
         return odbc_fetch_array($this->statement);
+    }
+
+    public function fetch_into($records)
+    {
+    // (MK) official doc https://www.redbooks.ibm.com/redbooks/pdfs/sg247218.pdf page 186
+        odbc_fetch_into($this->statement, $records);
+        return $records;
     }
 }
