@@ -58,6 +58,7 @@ class ODBCPdo extends PDO
 
     public function commit()
     {
+        // informix: primero habilitar logging con: ontape -s -B b2b
         $commit = odbc_commit($this->getConnection());
         odbc_autocommit($this->getConnection(), true);
         return $commit;

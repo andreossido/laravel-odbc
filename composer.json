@@ -1,13 +1,13 @@
 {
-	"name": "abram/laravel-odbc",
+	"name": "mkrohn/laravel-odbc",
 	"description": "ODBC integration for Laravel framework ",
 	"type": "library",
-	"homepage": "https://github.com/andreossido/laravel-odbc",
+	"homepage": "https://github.com/mkrohn/laravel-odbc",
 	"authors": [
 		{
-			"name": "Andrea Abram",
-			"email": "andreossido@gmail.com",
-			"homepage": "https://github.com/andreossido",
+			"name": "Martin Krohn",
+			"email": "github@krohn.com.ar",
+			"homepage": "https://github.com/mkrohn",
 			"role": "Developer"
 		}
 	],

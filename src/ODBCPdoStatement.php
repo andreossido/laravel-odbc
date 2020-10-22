@@ -37,6 +37,7 @@ class ODBCPdoStatement extends PDOStatement
                 $namedParam = substr($qryArray[$i], 1); // omite el : del nombre (MK)
                 $params[$namedParam] = null;
             }
+
             $i++;
         }
 
@@ -68,7 +69,7 @@ class ODBCPdoStatement extends PDOStatement
         {
             if (strtolower(substr($this->query, 0, 17)) == 'execute procedure')
             {
-                // MK: if it´s a stored procedure, column names may not be included
+                // MK: if it's a stored procedure, column names may not be included
                 $stored_proc = true;
             }
         }
